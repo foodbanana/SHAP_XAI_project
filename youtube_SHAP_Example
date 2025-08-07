@@ -1,0 +1,40 @@
+data = pd.read_csv(".. /파일경로", names = ["열1", "열2", ... "열8"])
+print(data)
+data.head()
+x = data["열 이름1"]
+y = data["열 이름"]
+#Train model 
+model = xgb.XGBRegressor(objective = "reg:squarederror")
+model.fit(x,y)
+
+# Get predictions
+y_pred = model.predict(x)
+
+#Model evaluation
+plt.figure(figsize=(5,5))
+
+#prediction
+plt.scatter(y,y_pred)
+#비교용 y=x 그래프
+plt.plot([0, 30], [0,30], color = 'r', linestyle='-', linewidth=2)
+
+#축
+plt.y_label('Predicted', size = 20)
+plt.xlabel('Actual', size=20)
+
+
+# TreeExplainer는 XGBoost, LightGBM, RandomForest 같은 트리 기반 모델에 최적화된 설명 모델입니다.
+explainer = shap.TreeExplainer(model)
+# explainer(X_test)를 호출하여 SHAP 값, 데이터, 기본값 등이 모두 포함된 Explanation 객체를 생성합니다.
+explanation = explainer(X_test)
+
+
+
+np.shape(shap_values.values)
+
+# waterfall plot for first observation
+shap.plots.waterfall(shap_values[0])
+# force plot
+shap.plots.force(shap_values[0])
+#stacked force plot
+shap.plots.force(shap_values[0:100])
