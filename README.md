@@ -1,4 +1,4 @@
-# SHAP을 활용한 CO2RR 촉매 분석 프로젝트
+# SHAP(explainable AI)(XAI)을 활용한 CO2RR 공정 데이터 분석 프로젝트
 
 이 프로젝트는 CO2RR(이산화탄소 환원 반응) 공정에서 특정 촉매의 피처 중요도를 SHAP(SHapley Additive exPlanations) 라이브러리를 사용해 분석합니다.
 
